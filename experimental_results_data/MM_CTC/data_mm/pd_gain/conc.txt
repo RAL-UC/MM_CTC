@@ -1,0 +1,14 @@
+comparación entre cpc y pid:
+Mejor cpc th0, th1, peor th2
+
+Divididas en 200 peor th0 y th2, mejor th1
+Divididas en 100 mejor th1, peor th0 y th2
+Divididas en 10 mejor th0, peor th1 y th2
+Divididas en 10 peor th0, th1 y th2
+
+Multiplicadas por 100 no converge
+Multiplicadas por 10, th0 no converge
+Multiplicados por 5, peor th0, th1, th2
+
+Comparación métodos de integración cpc:
+Rect: Mejor th0, th1, th2
