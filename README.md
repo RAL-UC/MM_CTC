@@ -38,5 +38,8 @@ Simply run the  **{*}.mdl** from Matlab/Simulink.
 
 The simulation files will allow you to `simulate` the controllers implemented on the real robot and compare the trajectory tracking errors and the corresponding energy consumption.
 
+---
+## Additional Information
 
+For information on advanced modelling of mobile manipulators using Mujoco see also: https://github.com/RAL-UC/SSMM 
 ---
