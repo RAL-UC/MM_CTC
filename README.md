@@ -21,7 +21,7 @@ Version 1.0  - 2025.11.29
 *Source: https://github.com/RAL-UC/MM_CTC*
 
 ---
-![Mobile manipulator](images/pruebalab-1_1200x887.png)
+![Mobile manipulator](Images/pruebalab-1_1200x887.png)
 
 ---
 ## COMPILING THE SOURCE CODE 
