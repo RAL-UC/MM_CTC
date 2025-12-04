@@ -60,8 +60,7 @@ as in Equations (7)–(8) of the manuscript.
     and state vector
     $\dot{\mathbf{x}} = \left[\mathbf{\dot{q}} \ \ \mathbf{\ddot{q}} \right]^T$
     consistent with the discrete-time formulation
-    $\mathbf{f}(\mathbf{x},\mathbf{u}) = \dot{\mathbf{x}}
-      = [\,\dot{\mathbf{q}}^\top \;\; \ddot{\mathbf{q}}^\top\,]^\top$
+	$\mathbf{f}\left(\mathbf{x},\mathbf{u}\right) = \dot{\mathbf{x}} = \left[\mathbf{\dot{q}} \ \ \mathbf{\ddot{q}} \right]^T$
     used in Section 5 of the manuscript,
   - computes the Jacobians $A = \partial \mathbf{f} / \partial \mathbf{x}$
     and $B = \partial \mathbf{f} / \partial \mathbf{u}$ at the chosen
