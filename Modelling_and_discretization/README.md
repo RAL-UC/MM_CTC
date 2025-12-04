@@ -57,22 +57,19 @@ as in Equations (7)–(8) of the manuscript.
     $\dot{\mathbf{x}} = \mathbf{f}(\mathbf{x},\tilde{\mathbf{u}})$ using an
     equivalent whole-body input vector
     $\tilde{\mathbf{u}} =
-    \begin{bmatrix}
-      \tau_1 & f_1 & \tau_3 & \tau_4 & \tau_5
-    \end{bmatrix}^\top$,
+    \left[\tau_1 \ f_1 \ \tau_3 \ \tau_4 \ \tau_5\right]^\top$,
     where $\tau_1$ and $f_1$ denote the base yaw torque and longitudinal
     base force in the body frame, and the state vector is written in the
     compact form
-    $\mathbf{x} =
-    \begin{bmatrix}
+    $\mathbf{x} =\left[
       \mathbf{q}^\top & \dot{\mathbf{q}}^\top
-    \end{bmatrix}^\top$,
+    \right]^\top$,
     consistent with the discrete-time formulation
     $\mathbf{f}(\mathbf{x},\mathbf{u}) =
       \dot{\mathbf{x}} =
-      \begin{bmatrix}
+      \left[
         \dot{\mathbf{q}}^\top & \ddot{\mathbf{q}}^\top
-      \end{bmatrix}^\top$
+      \right]^\top$
     used in Section 5 of the manuscript,  
   - computes the Jacobians $A = \partial \mathbf{f} / \partial \mathbf{x}$
     and $B = \partial \mathbf{f} / \partial \tilde{\mathbf{u}}$ at the
@@ -102,7 +99,7 @@ allocation block consistent with the skid-steer geometry. This block
 distributes the base yaw torque and longitudinal force into right/left
 wheel forces and torques, while the arm joint torques are applied
 directly. The resulting actuator-level input vector
-$\mathbf{u} =\left[\tau_2 \tau_3 \tau_4 \tau_5 \tau_6 \tau_7 \tau_8\right]^\top$
+$\mathbf{u} =\left[\tau_2 \ \tau_3 \ \tau_4 \ \tau_5 \ \tau_6 \ \tau_7 \ \tau_8\right]^\top$
 matches the input definition adopted in Section 5 of the manuscript.
 
 ---
