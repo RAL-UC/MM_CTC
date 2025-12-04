@@ -65,11 +65,7 @@ as in Equations (7)–(8) of the manuscript.
       \mathbf{q}^\top & \dot{\mathbf{q}}^\top
     \right]^\top$,
     consistent with the discrete-time formulation
-    $\mathbf{f}(\mathbf{x},\mathbf{u}) =
-      \dot{\mathbf{x}} =
-      \left[
-        \dot{\mathbf{q}}^\top & \ddot{\mathbf{q}}^\top
-      \right]^\top$
+    $\mathbf{f}(\mathbf{x},\mathbf{u}) = \dot{\mathbf{x}} = \left[\dot{\mathbf{q}}^\top \ \ddot{\mathbf{q}}^\top\right]^\top$
     used in Section 5 of the manuscript,  
   - computes the Jacobians $A = \partial \mathbf{f} / \partial \mathbf{x}$
     and $B = \partial \mathbf{f} / \partial \tilde{\mathbf{u}}$ at the
