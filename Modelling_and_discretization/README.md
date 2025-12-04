@@ -55,17 +55,17 @@ as in Equations (7)–(8) of the manuscript.
   with respect to the generalized accelerations, and then:
   - builds the nonlinear state-space model
     $\dot{\mathbf{x}} = \mathbf{f}(\mathbf{x},\mathbf{u})$ with  
-    $\mathbf{q} = [\,\theta_b \; p_x \; q_6 \; q_7 \; q_8\,]^\top$,  
-    $\mathbf{u} = [\,\tau_2 \; \tau_3 \; \tau_4 \; \tau_5 \; \tau_6 \; \tau_7 \; \tau_8\,]^\top$  
+    $\mathbf{q}=\left[\theta_b \ p_x \ q_6 \ q_7 \ q_8\right]^T$,  
+    $\mathbf{u}=\left[\tau_2 \ \tau_3 \ \tau_4 \ \tau_5 \ \tau_6 \ \tau_7 \ \tau_8\right]^T$  
     and state vector
-    $\mathbf{x} = [\,\mathbf{q}^\top \;\; \dot{\mathbf{q}}^\top\,]^\top$,
+    $\dot{\mathbf{x}} = \left[\mathbf{\dot{q}} \ \ \mathbf{\ddot{q}} \right]^T$
     consistent with the discrete-time formulation
     $\mathbf{f}(\mathbf{x},\mathbf{u}) = \dot{\mathbf{x}}
       = [\,\dot{\mathbf{q}}^\top \;\; \ddot{\mathbf{q}}^\top\,]^\top$
-    used in Section 5 of the manuscript, [file:120]
+    used in Section 5 of the manuscript,
   - computes the Jacobians $A = \partial \mathbf{f} / \partial \mathbf{x}$
     and $B = \partial \mathbf{f} / \partial \mathbf{u}$ at the chosen
-    equilibrium point, [file:120]
+    equilibrium point,
   - defines the output matrices $C, D$, and  
   - discretizes the model using a zero-order hold (`c2d`) with sampling
     time $T_s = 10 \mathrm{ms}$, consistent with the discrete-time
