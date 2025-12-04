@@ -97,6 +97,7 @@ and the linear model underlying the discrete root locus in **Figure 4**.
 
 ```matlab
 MM_SymbolicLinearizationAndDiscretization
+```
 
 This will:
 - load `inv_dyn.mat`,  
@@ -116,6 +117,7 @@ If full regeneration of the inverse-dynamics expressions is required:
 
 ```matlab
 InvDym_MM
+```
 
 This recomputes the symbolic efforts `tau1`, `flin1`, `tau3`, `tau4`,
 and `tau5` using ABA-based floating-base inverse dynamics and overwrites
@@ -126,6 +128,7 @@ computations.
 
 ```matlab
 MM_SymbolicLinearizationAndDiscretization
+```
 
 to rebuild `M(q)`, `C(q,qdot)`, `G(q)` and the corresponding
 discrete-time linear model.
