@@ -50,26 +50,23 @@ as in Equations (7)–(8) of the manuscript.
 
 - `MM_SymbolicLinearizationAndDiscretization.m`  
   Loads the precomputed symbolic efforts from `inv_dyn.mat`, reconstructs
-  the inertia matrix $M(q)$, Coriolis/centrifugal vector $C(q,\dot{q})$ and
-  gravity vector $G(q)$ by coefficient extraction with respect to the
-  generalized accelerations, and then:
-  - builds the nonlinear state-space model $\dot{x} = f(x,u)$ with  
-    $x = \begin{bmatrix}
-      \phi & \dot{\phi} & \int v_b & v_b &
-      \theta_3 & \theta_4 & \theta_5 &
-      \dot{\theta}_3 & \dot{\theta}_4 & \dot{\theta}_5
-    \end{bmatrix}^\top$,
-    $u =
-    \begin{bmatrix}
-      t_1 & f_1 & t_3 & t_4 & t_5
-    \end{bmatrix}^\top$,
-    consistent with the notation used in the discrete-time model of
-    **Section 5**,
-  - computes the Jacobians $A = \partial f / \partial x$ and
-    $B = \partial f / \partial u$ at the equilibrium point where the base
-    is at rest and the arm is horizontally extended forward, as described
-    in **Section 5.1**,
-  - defines the output matrices $C, D$ to extract position outputs, and  
+  the inertia matrix $M(q)$, the Coriolis/centrifugal vector
+  $C(q,\dot{q})$ and the gravity vector $G(q)$ by coefficient extraction
+  with respect to the generalized accelerations, and then:
+  - builds the nonlinear state-space model
+    $\dot{\mathbf{x}} = \mathbf{f}(\mathbf{x},\mathbf{u})$ with  
+    $\mathbf{q} = [\,\theta_b \; p_x \; q_6 \; q_7 \; q_8\,]^\top$,  
+    $\mathbf{u} = [\,\tau_2 \; \tau_3 \; \tau_4 \; \tau_5 \; \tau_6 \; \tau_7 \; \tau_8\,]^\top$  
+    and state vector
+    $\mathbf{x} = [\,\mathbf{q}^\top \;\; \dot{\mathbf{q}}^\top\,]^\top$,
+    consistent with the discrete-time formulation
+    $\mathbf{f}(\mathbf{x},\mathbf{u}) = \dot{\mathbf{x}}
+      = [\,\dot{\mathbf{q}}^\top \;\; \ddot{\mathbf{q}}^\top\,]^\top$
+    used in Section 5 of the manuscript, [file:120]
+  - computes the Jacobians $A = \partial \mathbf{f} / \partial \mathbf{x}$
+    and $B = \partial \mathbf{f} / \partial \mathbf{u}$ at the chosen
+    equilibrium point, [file:120]
+  - defines the output matrices $C, D$, and  
   - discretizes the model using a zero-order hold (`c2d`) with sampling
     time $T_s = 10 \mathrm{ms}$, consistent with the discrete-time
     implementation discussed in **Section 5**.
