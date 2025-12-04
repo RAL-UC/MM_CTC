@@ -60,7 +60,7 @@ as in Equations (7)–(8) of the manuscript.
     \left[\tau_1 \ f_1 \ \tau_3 \ \tau_4 \ \tau_5\right]^\top$,
     where $\tau_1$ and $f_1$ denote the base yaw torque and longitudinal
     base force in the body frame, and the state vector is written in the
-    compact form $\mathbf{x} =\left[\mathbf{q} \dot{\mathbf{q}}\right]^\top$,
+    compact form $\mathbf{x} =\left[\mathbf{q} \ \dot{\mathbf{q}}\right]^\top$,
     consistent with the discrete-time formulation $\mathbf{f}(\mathbf{x},\mathbf{u}) = \dot{\mathbf{x}} = \left[\dot{\mathbf{q}} \ \ddot{\mathbf{q}}\right]^\top$
     used in Section 5 of the manuscript,  
   - computes the Jacobians $A = \partial \mathbf{f} / \partial \mathbf{x}$
@@ -125,10 +125,10 @@ MM_SymbolicLinearizationAndDiscretization
 This will:
 - load `inv_dyn.mat`,  
 - reconstruct $M(q)$, $C(q,\dot{q})$ and $G(q)$,  
-- build the nonlinear state-space model $\dot{x} = f(x,u)$,  
-- evaluate the Jacobians $A$ and $B$ at the operating point used in
-  the manuscript, and  
-- discretize the model with the sampling time $T_s = 10 \mathrm{ms}$,
+- build the corresponding nonlinear state-space model $\dot{x} = f(x,\cdot)$,  
+- evaluate the Jacobians $A$ and $B$ at the operating point used in the
+  manuscript, and  
+- discretize the model with the sampling time $T_s = 10\,\mathrm{ms}$,
   producing the discrete-time state-space representation used in the
   subsequent controller and PSO-tuning scripts.
 
