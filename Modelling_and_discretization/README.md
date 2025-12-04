@@ -54,8 +54,7 @@ as in Equations (7)–(8) of the manuscript.
   $C(q,\dot{q})$ and the gravity vector $G(q)$ by coefficient extraction
   with respect to the generalized accelerations, and then:
   - builds the nonlinear state-space model
-    $\dot{\mathbf{x}} = \mathbf{f}(\mathbf{x},\mathbf{u})$ with  
-    $\mathbf{q}=\left[\theta_b \ p_x \ q_6 \ q_7 \ q_8\right]^T$, $\mathbf{u}=\left[\tau_2 \ \tau_3 \ \tau_4 \ \tau_5 \ \tau_6 \ \tau_7 \ \tau_8\right]^T$  and state vector $\dot{\mathbf{x}} = \left[\mathbf{\dot{q}} \ \ \mathbf{\ddot{q}} \right]^T$ used in Section 5 of the manuscript,
+    $\dot{\mathbf{x}} = \mathbf{f}(\mathbf{x},\mathbf{u})$ with $\mathbf{q}=\left[\theta_b \ p_x \ q_6 \ q_7 \ q_8\right]^T$, $\mathbf{u}=\left[\tau_2 \ \tau_3 \ \tau_4 \ \tau_5 \ \tau_6 \ \tau_7 \ \tau_8\right]^T$  and state vector $\dot{\mathbf{x}} = \left[\mathbf{\dot{q}} \ \ \mathbf{\ddot{q}} \right]^T$ used in Section 5 of the manuscript,
   - computes the Jacobians $A = \partial \mathbf{f} / \partial \mathbf{x}$
     and $B = \partial \mathbf{f} / \partial \mathbf{u}$ at the chosen
     equilibrium point,
