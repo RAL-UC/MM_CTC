@@ -125,12 +125,15 @@ MM_SymbolicLinearizationAndDiscretization
 This will:
 - load `inv_dyn.mat`,  
 - reconstruct $M(q)$, $C(q,\dot{q})$ and $G(q)$,  
-- build the corresponding nonlinear state-space model $\dot{x} = f(x,\cdot)$,  
+- build the nonlinear state-space model $\dot{x} = f(x,\hat{u})$ based on
+  the equivalent whole-body input vector
+  $\hat{\mathbf{u}} = \left[\tau_1 \ f_1 \ \tau_3 \ \tau_4 \ \tau_5\right]^\top$,  
 - evaluate the Jacobians $A$ and $B$ at the operating point used in the
   manuscript, and  
 - discretize the model with the sampling time $T_s = 10\,\mathrm{ms}$,
   producing the discrete-time state-space representation used in the
   subsequent controller and PSO-tuning scripts.
+
 
 ### Full regeneration (optional, expensive)
 
