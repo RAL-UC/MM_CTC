@@ -13,15 +13,9 @@ torque controllers, including the parameter values reported in **Table 1**
 and the linear model underlying the discrete root locus in **Figure 4**.
 
 The continuous-time inverse dynamics is written in the standard form
-$
-\tau = M(q)\ddot{q} + C(q,\dot{q}) + G(q) + F(\dot{q}),
-$
+$\tau = M(q)\ddot{q} + C(q,\dot{q}) + G(q) + F(\dot{q})$,
 as in Equation (6), and the computed torque control law follows
-$
-\tau_{\mathrm{ctc}} =
-M(q)\bigl[\ddot{q}_d + K_v \,\dot{\tilde{q}} + K_p \,\tilde{q}\bigr]
-+ C(q,\dot{q}) + G(q) + F(\dot{q}),
-$
+$\tau_{\mathrm{ctc}} = M(q)\bigl[\ddot{q}_d + K_v \,\dot{\tilde{q}} + K_p \,\tilde{q}\bigr] + C(q,\dot{q}) + G(q) + F(\dot{q})$,
 as in Equations (7)–(8) of the manuscript.
 
 ---
