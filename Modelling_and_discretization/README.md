@@ -54,10 +54,29 @@ as in Equations (7)–(8) of the manuscript.
   $C(q,\dot{q})$ and the gravity vector $G(q)$ by coefficient extraction
   with respect to the generalized accelerations, and then:
   - builds the nonlinear state-space model
-    $\dot{\mathbf{x}} = \mathbf{f}(\mathbf{x},\mathbf{u})$ with $\mathbf{q}=\left[\theta_b \ p_x \ q_6 \ q_7 \ q_8\right]^T$, $\mathbf{u}=\left[\tau_2 \ \tau_3 \ \tau_4 \ \tau_5 \ \tau_6 \ \tau_7 \ \tau_8\right]^T$  and state vector $\dot{\mathbf{x}} = \left[\mathbf{\dot{q}} \ \ \mathbf{\ddot{q}} \right]^T$ used in Section 5 of the manuscript,
+    $\dot{\mathbf{x}} = \mathbf{f}(\mathbf{x},\tilde{\mathbf{u}})$ using an
+    equivalent whole-body input vector
+    $$\tilde{\mathbf{u}} =
+    \begin{bmatrix}
+      \tau_1 & f_1 & \tau_3 & \tau_4 & \tau_5
+    \end{bmatrix}^\top$$,
+    where $\tau_1$ and $f_1$ denote the base yaw torque and longitudinal
+    base force in the body frame, and the state vector is written in the
+    compact form
+    $$\mathbf{x} =
+    \begin{bmatrix}
+      \mathbf{q}^\top & \dot{\mathbf{q}}^\top
+    \end{bmatrix}^\top$$,
+    consistent with the discrete-time formulation
+    $\mathbf{f}(\mathbf{x},\mathbf{u}) =
+      \dot{\mathbf{x}} =
+      \begin{bmatrix}
+        \dot{\mathbf{q}}^\top & \ddot{\mathbf{q}}^\top
+      \end{bmatrix}^\top$
+    used in Section 5 of the manuscript,  
   - computes the Jacobians $A = \partial \mathbf{f} / \partial \mathbf{x}$
-    and $B = \partial \mathbf{f} / \partial \mathbf{u}$ at the chosen
-    equilibrium point,
+    and $B = \partial \mathbf{f} / \partial \tilde{\mathbf{u}}$ at the
+    chosen equilibrium point,  
   - defines the output matrices $C, D$, and  
   - discretizes the model using a zero-order hold (`c2d`) with sampling
     time $T_s = 10 \mathrm{ms}$, consistent with the discrete-time
@@ -71,6 +90,23 @@ as in Equations (7)–(8) of the manuscript.
   computationally expensive (in particular when run in MATLAB Online), and
   it is sufficient for reproducing the linearization, discretization, and
   controller design steps reported in the manuscript.
+
+---
+
+### Implementation note
+
+In the Simulink implementations used for simulation and laboratory
+experiments, the equivalent base inputs $(\tau_1, f_1)$ obtained from the
+linearized model are mapped to the physical wheel torques via a static
+allocation block consistent with the skid-steer geometry. This block
+distributes the base yaw torque and longitudinal force into right/left
+wheel forces and torques, while the arm joint torques are applied
+directly. The resulting actuator-level input vector
+$$\mathbf{u} =
+\begin{bmatrix}
+\tau_2 & \tau_3 & \tau_4 & \tau_5 & \tau_6 & \tau_7 & \tau_8
+\end{bmatrix}^\top$$
+matches the input definition adopted in Section 5 of the manuscript.
 
 ---
 
