@@ -60,12 +60,8 @@ as in Equations (7)–(8) of the manuscript.
     \left[\tau_1 \ f_1 \ \tau_3 \ \tau_4 \ \tau_5\right]^\top$,
     where $\tau_1$ and $f_1$ denote the base yaw torque and longitudinal
     base force in the body frame, and the state vector is written in the
-    compact form
-    $\mathbf{x} =\left[
-      \mathbf{q}^\top & \dot{\mathbf{q}}^\top
-    \right]^\top$,
-    consistent with the discrete-time formulation
-    $\mathbf{f}(\mathbf{x},\mathbf{u}) = \dot{\mathbf{x}} = \left[\dot{\mathbf{q}}^\top \ \ddot{\mathbf{q}}^\top\right]^\top$
+    compact form $\mathbf{x} =\left[\mathbf{q}^\top \dot{\mathbf{q}}^\top\right]^\top$,
+    consistent with the discrete-time formulation $\mathbf{f}(\mathbf{x},\mathbf{u}) = \dot{\mathbf{x}} = \left[\dot{\mathbf{q}}^\top \ \ddot{\mathbf{q}}^\top\right]^\top$
     used in Section 5 of the manuscript,  
   - computes the Jacobians $A = \partial \mathbf{f} / \partial \mathbf{x}$
     and $B = \partial \mathbf{f} / \partial \tilde{\mathbf{u}}$ at the
