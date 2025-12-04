@@ -122,18 +122,21 @@ matches the input definition adopted in Section 5 of the manuscript.
 MM_SymbolicLinearizationAndDiscretization
 ```
 
-This will:
-- load `inv_dyn.mat`,  
-- reconstruct $M(q)$, $C(q,\dot{q})$ and $G(q)$,  
-- build the nonlinear state-space model $\dot{x} = f(x,\hat{u})$ based on
-  the equivalent whole-body input vector
-  $\hat{\mathbf{u}} = \left[\tau_1 \ f_1 \ \tau_3 \ \tau_4 \ \tau_5\right]^\top$,  
-- evaluate the Jacobians $A$ and $B$ at the operating point used in the
-  manuscript, and  
-- discretize the model with the sampling time $T_s = 10\,\mathrm{ms}$,
-  producing the discrete-time state-space representation used in the
-  subsequent controller and PSO-tuning scripts.
-
+loads the precomputed symbolic efforts from `inv_dyn.mat`, reconstructs
+the inertia matrix $M(q)$, the Coriolis/centrifugal vector
+$C(q,\dot{q})$ and the gravity vector $G(q)$ by coefficient extraction
+with respect to the generalized accelerations, and then:
+- builds the nonlinear state-space model $\dot{\mathbf{x}} = \mathbf{f}(\mathbf{x},\hat{\mathbf{u}})$ using an
+equivalent whole-body input vector $\hat{\mathbf{u}} = \left[\tau_1 \ f_1 \ \tau_3 \ \tau_4 \ \tau_5\right]^\top,$
+where $\tau_1$ and $f_1$ denote the base yaw torque and longitudinal base force in the body frame, $\mathbf{q} = [\theta_b \ p_x \ q_6 \ q_7 \ q_8]^\top$ and the state vector is written in the compact form 
+$\mathbf{x} =\left[\mathbf{q}^\top \ \dot{\mathbf{q}}^\top\right]^\top,$ consistent with the discrete-time formulation $\mathbf{f}(\mathbf{x},\mathbf{u}) = \dot{\mathbf{x}} = \left[\dot{\mathbf{q}}^\top \ \ddot{\mathbf{q}}^\top\right]^\top$ used in Section 5 of the manuscript,  
+- computes the Jacobians $A = \partial \mathbf{f} / \partial \mathbf{x}$
+and $B = \partial \mathbf{f} / \partial \hat{\mathbf{u}}$ at the
+chosen equilibrium point,  
+- defines the output matrices $C, D$, and  
+- discretizes the model using a zero-order hold (`c2d`) with sampling
+time $T_s = 10 \mathrm{ms}$, consistent with the discrete-time
+implementation discussed in **Section 5**.
 
 ### Full regeneration (optional, expensive)
 
