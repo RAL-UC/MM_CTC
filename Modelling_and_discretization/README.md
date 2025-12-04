@@ -3,14 +3,26 @@
 This folder contains the MATLAB scripts and precomputed data used to derive
 the dynamic model of the skid-steer mobile manipulator and to obtain the
 discrete-time state-space model used throughout the manuscript. The
-implementation follows a coupled base–arm formulation based on Featherstone’s
-spatial vector algebra and a floating-base representation.
+implementation follows a coupled base–arm formulation based on
+Featherstone’s spatial vector algebra and a floating-base representation.
 
 The derivations implemented here correspond to the coupled dynamic model
-described in **Section 3** of the manuscript and to the discrete-time linear
-model used in **Section 5** for the design and analysis of the PD and computed
+described in **Section 3** and to the discrete-time linear model used in
+**Section 5** for the design and analysis of the discrete PD and computed
 torque controllers, including the parameter values reported in **Table 1**
 and the linear model underlying the discrete root locus in **Figure 4**.
+
+The continuous-time inverse dynamics is written in the standard form
+$$
+\tau = M(q)\ddot{q} + C(q,\dot{q}) + G(q) + F(\dot{q}),
+$$
+as in Equation (6), and the computed torque control law follows
+$$
+\tau_{\mathrm{ctc}} =
+M(q)\bigl[\ddot{q}_d + K_v \,\dot{\tilde{q}} + K_p \,\tilde{q}\bigr]
++ C(q,\dot{q}) + G(q) + F(\dot{q}),
+$$
+as in Equations (7)–(8) of the manuscript.
 
 ---
 
@@ -25,9 +37,8 @@ and the linear model underlying the discrete root locus in **Figure 4**.
   - the net spatial wrench acting on the floating base,  
   which is then projected onto the base yaw axis and longitudinal axis to
   obtain the efforts `tau1` (base yaw torque) and `flin1` (base longitudinal
-  force). These efforts are the computational counterparts of the base and
-  arm interaction terms described in the coupled dynamic model of
-  **Section 3**.
+  force). These efforts implement the base–arm interaction terms appearing
+  in the coupled dynamic model of **Section 3**.
 
 - `InvDym_MM.m`  
   Uses `IDfb_MM.m` and the underlying multibody model to compute symbolic
@@ -35,38 +46,55 @@ and the linear model underlying the discrete root locus in **Figure 4**.
   - `tau1`   – base yaw torque,  
   - `flin1`  – base longitudinal force,  
   - `tau3`, `tau4`, `tau5` – torques of the 3-DOF arm joints.  
-  These efforts are then used to reconstruct the standard dynamic model
-  \(M(q)\ddot q + C(q,\dot q) + G(q)\,g = \tau\), which is the starting point
-  for the inverse-dynamics control law introduced in **Section 4** and used in
-  the discrete-time controller design in **Section 5**. The script saves its
-  symbolic results to `inv_dyn.mat`.
+  These efforts are then combined to reconstruct the standard dynamic
+  model
+  $$
+  M(q)\ddot{q} + C(q,\dot{q}) + G(q)\,g = \tau,
+  $$
+  which is the starting point for the inverse-dynamics control law
+  introduced in **Section 4** and used in the discrete-time controller
+  design in **Section 5**. The script saves its symbolic results to
+  `inv_dyn.mat`.
 
 - `MM_SymbolicLinearizationAndDiscretization.m`  
   Loads the precomputed symbolic efforts from `inv_dyn.mat`, reconstructs
-  the inertia matrix `M(q)`, Coriolis/centrifugal vector `C(q,qdot)` and
-  gravity vector `G(q)` by coefficient extraction with respect to the
+  the inertia matrix $M(q)$, Coriolis/centrifugal vector $C(q,\dot{q})$ and
+  gravity vector $G(q)$ by coefficient extraction with respect to the
   generalized accelerations, and then:
-  - builds the nonlinear state-space model \(ẋ = f(x,u)\) with  
-    \(x = [\phi, \dot\phi, \int v_b, v_b, \theta_3, \theta_4, \theta_5,
-           \dot\theta_3, \dot\theta_4, \dot\theta_5]^\top\) and  
-    \(u = [t_1, f_1, t_3, t_4, t_5]^\top\),  
-  - computes the Jacobians \(A = \partial f/\partial x\),
-    \(B = \partial f/\partial u\) at the equilibrium point where the base
-    is at rest and the arm is horizontally extended forward, as described in
-    **Section 5.1**,  
-  - defines the output matrices \(C, D\) to extract position outputs, and  
-  - discretizes the model using a zero-order hold (`c2d`) with sampling time
-    \(T_s = 10\) ms, consistent with the discrete-time implementation
-    discussed in **Section 5**.
+  - builds the nonlinear state-space model $\dot{x} = f(x,u)$ with  
+    $$
+    x =
+    \begin{bmatrix}
+      \phi & \dot{\phi} & \int v_b & v_b &
+      \theta_3 & \theta_4 & \theta_5 &
+      \dot{\theta}_3 & \dot{\theta}_4 & \dot{\theta}_5
+    \end{bmatrix}^\top,
+    $$
+    $$
+    u =
+    \begin{bmatrix}
+      t_1 & f_1 & t_3 & t_4 & t_5
+    \end{bmatrix}^\top,
+    $$
+    consistent with the notation used in the discrete-time model of
+    **Section 5**,
+  - computes the Jacobians $A = \partial f / \partial x$ and
+    $B = \partial f / \partial u$ at the equilibrium point where the base
+    is at rest and the arm is horizontally extended forward, as described
+    around lines 226–233 in **Section 5.1**,
+  - defines the output matrices $C, D$ to extract position outputs, and  
+  - discretizes the model using a zero-order hold (`c2d`) with sampling
+    time $T_s = 10\,\mathrm{ms}$, consistent with the discrete-time
+    implementation discussed in **Section 5**.
 
 - `inv_dyn.mat`  
   Precomputed symbolic inverse-dynamics data generated by `InvDym_MM.m`. It
-  contains the efforts `tau1`, `flin1`, `tau3`, `tau4`, and `tau5` expressed
-  in terms of the generalized coordinates, velocities, and accelerations.
-  This file is provided because its generation is computationally expensive
-  (especially under MATLAB Online), and it is sufficient for reproducing the
-  linearization, discretization, and controller design steps reported in the
-  manuscript.
+  contains the efforts `tau1`, `flin1`, `tau3`, `tau4`, and `tau5`
+  expressed in terms of the generalized coordinates, velocities, and
+  accelerations. This file is provided because its generation is
+  computationally expensive (in particular when run in MATLAB Online), and
+  it is sufficient for reproducing the linearization, discretization, and
+  controller design steps reported in the manuscript.
 
 ---
 
@@ -75,9 +103,9 @@ and the linear model underlying the discrete root locus in **Figure 4**.
 - The coupled dynamic model of the mobile manipulator implemented here is
   the computational realization of the derivation presented in **Section 3**,
   including the base–arm interaction illustrated in **Figures 1–2**.
-- The recovered `M(q)`, `C(q,qdot)` and `G(q)` correspond to the inverse
-  dynamics equation in **Equation (6)** and are used in the definition of the
-  computed torque control law in **Equations (7)–(8)**.
+- The recovered $M(q)$, $C(q,\dot{q})$ and $G(q)$ correspond to the inverse
+  dynamics equation in **Equation (6)** and are used in the definition of
+  the computed torque control law in **Equations (7)–(8)**.
 - The linearized, discretized model produced by
   `MM_SymbolicLinearizationAndDiscretization.m` underlies the discrete-time
   analyses in **Section 5**, including the discrete root locus study in
@@ -90,10 +118,7 @@ and the linear model underlying the discrete root locus in **Figure 4**.
 ### Recommended (fast) path
 
 1. Ensure that the repository root is on the MATLAB path and that the
-   Featherstone-based multibody model construction script used by
-   `IDfb_MM.m` is available on the path.
-
-2. From `Modelling_and_Discretization/`, run:
+   Featherstone-based multibody model construction script used
 
 ```matlab
 MM_SymbolicLinearizationAndDiscretization
@@ -101,13 +126,13 @@ MM_SymbolicLinearizationAndDiscretization
 
 This will:
 - load `inv_dyn.mat`,  
-- reconstruct `M(q)`, `C(q,qdot)` and `G(q)`,  
-- build the nonlinear state-space model \(ẋ = f(x,u)\),  
-- evaluate the Jacobians \(A\) and \(B\) at the operating point used in
+- reconstruct $M(q)$, $C(q,\dot{q})$ and $G(q)$,  
+- build the nonlinear state-space model $\dot{x} = f(x,u)$,  
+- evaluate the Jacobians $A$ and $B$ at the operating point used in
   the manuscript, and  
-- discretize the model with the sampling time \(T_s = 10\) ms, producing
-  the discrete-time state-space representation used in the subsequent
-  controller and PSO-tuning scripts.
+- discretize the model with the sampling time $T_s = 10\,\mathrm{ms}$,
+  producing the discrete-time state-space representation used in the
+  subsequent controller and PSO-tuning scripts.
 
 ### Full regeneration (optional, expensive)
 
@@ -130,9 +155,11 @@ computations.
 MM_SymbolicLinearizationAndDiscretization
 ```
 
-to rebuild `M(q)`, `C(q,qdot)`, `G(q)` and the corresponding
+to rebuild $M(q)$, $C(q,\dot{q})$, $G(q)$ and the corresponding
 discrete-time linear model.
 
 For reproducing the main modelling and discretization results reported in
 the manuscript, using the provided `inv_dyn.mat` and running only
 `MM_SymbolicLinearizationAndDiscretization.m` is typically sufficient.
+
+
