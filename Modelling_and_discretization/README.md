@@ -56,17 +56,17 @@ as in Equations (7)–(8) of the manuscript.
   - builds the nonlinear state-space model
     $\dot{\mathbf{x}} = \mathbf{f}(\mathbf{x},\tilde{\mathbf{u}})$ using an
     equivalent whole-body input vector
-    $$\tilde{\mathbf{u}} =
+    $\tilde{\mathbf{u}} =
     \begin{bmatrix}
       \tau_1 & f_1 & \tau_3 & \tau_4 & \tau_5
-    \end{bmatrix}^\top$$,
+    \end{bmatrix}^\top$,
     where $\tau_1$ and $f_1$ denote the base yaw torque and longitudinal
     base force in the body frame, and the state vector is written in the
     compact form
-    $$\mathbf{x} =
+    $\mathbf{x} =
     \begin{bmatrix}
       \mathbf{q}^\top & \dot{\mathbf{q}}^\top
-    \end{bmatrix}^\top$$,
+    \end{bmatrix}^\top$,
     consistent with the discrete-time formulation
     $\mathbf{f}(\mathbf{x},\mathbf{u}) =
       \dot{\mathbf{x}} =
