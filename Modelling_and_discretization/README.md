@@ -54,17 +54,17 @@ as in Equations (7)–(8) of the manuscript.
   $C(q,\dot{q})$ and the gravity vector $G(q)$ by coefficient extraction
   with respect to the generalized accelerations, and then:
   - builds the nonlinear state-space model
-    $\dot{\mathbf{x}} = \mathbf{f}(\mathbf{x},\tilde{\mathbf{u}})$ using an
-    equivalent whole-body input vector
-    $\tilde{\mathbf{u}} =
+    $\dot{\mathbf{x}} = \mathbf{f}(\mathbf{x},\hat{\mathbf{u}})$ using an
+    equivalent input vector
+    $\hat{\mathbf{u}} =
     \left[\tau_1 \ f_1 \ \tau_3 \ \tau_4 \ \tau_5\right]^\top$,
     where $\tau_1$ and $f_1$ denote the base yaw torque and longitudinal
     base force in the body frame, and the state vector is written in the
-    compact form $\mathbf{x} =\left[\mathbf{q}^\top \dot{\mathbf{q}}^\top\right]^\top$,
-    consistent with the discrete-time formulation $\mathbf{f}(\mathbf{x},\mathbf{u}) = \dot{\mathbf{x}} = \left[\dot{\mathbf{q}}^\top \ \ddot{\mathbf{q}}^\top\right]^\top$
+    compact form $\mathbf{x} =\left[\mathbf{q} \dot{\mathbf{q}}\right]^\top$,
+    consistent with the discrete-time formulation $\mathbf{f}(\mathbf{x},\mathbf{u}) = \dot{\mathbf{x}} = \left[\dot{\mathbf{q}} \ \ddot{\mathbf{q}}\right]^\top$
     used in Section 5 of the manuscript,  
   - computes the Jacobians $A = \partial \mathbf{f} / \partial \mathbf{x}$
-    and $B = \partial \mathbf{f} / \partial \tilde{\mathbf{u}}$ at the
+    and $B = \partial \mathbf{f} / \partial \hat{\mathbf{u}}$ at the
     chosen equilibrium point,  
   - defines the output matrices $C, D$, and  
   - discretizes the model using a zero-order hold (`c2d`) with sampling
