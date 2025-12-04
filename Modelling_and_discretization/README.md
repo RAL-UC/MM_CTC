@@ -102,7 +102,7 @@ allocation block consistent with the skid-steer geometry. This block
 distributes the base yaw torque and longitudinal force into right/left
 wheel forces and torques, while the arm joint torques are applied
 directly. The resulting actuator-level input vector
-$\mathbf{u} =\begin{bmatrix}\tau_2 & \tau_3 & \tau_4 & \tau_5 & \tau_6 & \tau_7 & \tau_8\end{bmatrix}^\top$
+$\mathbf{u} =\begin{bmatrix}\tau_2 \tau_3 \tau_4 \tau_5 \tau_6 \tau_7 \tau_8\end{bmatrix}^\top$
 matches the input definition adopted in Section 5 of the manuscript.
 
 ---
