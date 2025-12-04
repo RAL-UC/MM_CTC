@@ -42,7 +42,7 @@ as in Equations (7)–(8) of the manuscript.
   - `tau3`, `tau4`, `tau5` – torques of the 3-DOF arm joints.  
   These efforts are then combined to reconstruct the standard dynamic
   model
-  $M(q)\ddot{q} + C(q,\dot{q}) + G(q)\,g = \tau$,
+  $M(q)\ddot{q} + C(q,\dot{q}) + G(q) = \tau$,
   which is the starting point for the inverse-dynamics control law
   introduced in **Section 4** and used in the discrete-time controller
   design in **Section 5**. The script saves its symbolic results to
@@ -54,19 +54,15 @@ as in Equations (7)–(8) of the manuscript.
   gravity vector $G(q)$ by coefficient extraction with respect to the
   generalized accelerations, and then:
   - builds the nonlinear state-space model $\dot{x} = f(x,u)$ with  
-    $x =
-    \begin{bmatrix}
+    $x = \begin{bmatrix}
       \phi & \dot{\phi} & \int v_b & v_b &
       \theta_3 & \theta_4 & \theta_5 &
       \dot{\theta}_3 & \dot{\theta}_4 & \dot{\theta}_5
-    \end{bmatrix}^\top
-    $,
-    $
-    u =
+    \end{bmatrix}^\top$,
+    $u =
     \begin{bmatrix}
       t_1 & f_1 & t_3 & t_4 & t_5
-    \end{bmatrix}^\top
-    $,
+    \end{bmatrix}^\top$,
     consistent with the notation used in the discrete-time model of
     **Section 5**,
   - computes the Jacobians $A = \partial f / \partial x$ and
@@ -75,7 +71,7 @@ as in Equations (7)–(8) of the manuscript.
     in **Section 5.1**,
   - defines the output matrices $C, D$ to extract position outputs, and  
   - discretizes the model using a zero-order hold (`c2d`) with sampling
-    time $T_s = 10\,\mathrm{ms}$, consistent with the discrete-time
+    time $T_s = 10 \mathrm{ms}$, consistent with the discrete-time
     implementation discussed in **Section 5**.
 
 - `inv_dyn.mat`  
@@ -121,7 +117,7 @@ This will:
 - build the nonlinear state-space model $\dot{x} = f(x,u)$,  
 - evaluate the Jacobians $A$ and $B$ at the operating point used in
   the manuscript, and  
-- discretize the model with the sampling time $T_s = 10\,\mathrm{ms}$,
+- discretize the model with the sampling time $T_s = 10 \mathrm{ms}$,
   producing the discrete-time state-space representation used in the
   subsequent controller and PSO-tuning scripts.
 
