@@ -92,8 +92,8 @@ the top-level `README.md` in the repository root.
 
 ## How to run simulations (from this folder)
 
-> The following steps assume that MATLAB and Simulink are installed and
-> configured as described in the top-level README.
+The following steps assume that MATLAB and Simulink are installed and
+configured as described in the top-level README.
 
 1. **Ensure the repository is on the MATLAB path**  
    (see root `README.md` for the recommended `addpath` command).
