@@ -24,7 +24,7 @@ For a given gain vector $x \in \mathbb{R}^{10}$, the objective function proceeds
 3. Simulates the selected discrete-time controller (CTC or PD) along predetermined reference trajectories using the corresponding Simulink model.
 4. Computes:
    - The root-mean-square (RMS) end-effector position tracking error $J_{\text{traj}}$ in Cartesian space.
-   - The RMS control power \(J_{\text{ener}}\) from joint torque–velocity products.
+   - The RMS control power $J_{\text{ener}}$ from joint torque–velocity products.
 5. Forms the scalar cost:
    $J = \alpha \ J_{\text{traj}} + \beta \ J_{\text{ener}}$,
    where $\alpha$ and $\beta$ are positive weights defined in the objective function to balance tracking accuracy and energy consumption.
