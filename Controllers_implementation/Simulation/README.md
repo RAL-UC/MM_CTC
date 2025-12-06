@@ -72,7 +72,7 @@ the top-level `README.md` in the repository root.
 
 - The simulation models in this folder use the coupled base–arm dynamic model
   and the discrete-time linearization/discretization derived in
-  `Modelling_and_Discretization`, which implement the formulation of
+  `Modelling_and_discretization`, which implement the formulation of
   **Section 3** and the discretization procedure of **Section 5**.
 
 - The recovered matrices $M(q)$, $C(q,\dot{q})$, and $G(q)$ from the
@@ -101,7 +101,7 @@ configured as described in the top-level README.
 2. **Navigate to the simulation folder in MATLAB**
 
 ```matlab
-cd('<repo_root>/Controller_Implementation/Simulation');
+cd('<repo_root>/Controller_implementation/Simulation');
 ```
 
 3. **Run the experiment script**
@@ -129,7 +129,7 @@ The script will:
 By default, results are written to:
 
 ```matlab
-<repo_root>/Experiment_Results/Simulation_Results/
+<repo_root>/Experimental_results_data/Simulation/
 ```
 
 If this folder does not exist (e.g., when running the script standalone),
@@ -156,7 +156,7 @@ the numerical results reported in the manuscript (e.g., **Table 2**).
 
 - The sampling time in the Simulink models is $T_s = 10 \mathrm{ms}$,
 consistent with the discrete-time design and the modeling scripts in
-`Modelling_and_Discretization`.
+`Modelling_and_discretization`.
 
 - Sensor and actuator noise are included to emulate encoder quantization and
 actuation disturbances, as described in the simulation setup of **Section 6**,
@@ -164,5 +164,5 @@ and are randomized across repetitions to enable Monte Carlo–style averages.
 
 - Controller retuning (PSO) and model derivation (Featherstone-based
 dynamics, linearization, and discretization) are handled in separate
-directories (`PSO_Tuning` and `Modelling_and_Discretization`) and documented
+directories (`PSO_tuning` and `Modelling_and_discretization`) and documented
 in their respective READMEs.
