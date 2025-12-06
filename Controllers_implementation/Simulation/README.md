@@ -3,7 +3,7 @@
 This folder contains the MATLAB scripts, Simulink models, and precomputed
 data used to implement and evaluate the discrete-time controllers for the
 skid-steer mobile manipulator. The focus is on trajectory tracking using a
-whole-body discrete-time Computed Torque Controller (CTC) and a discrete-time
+discrete-time Computed Torque Controller (CTC) and a discrete-time
 Proportional–Derivative (PD) controller, both tuned by Particle Swarm
 Optimization (PSO) and compared in terms of tracking accuracy and control
 energy.
