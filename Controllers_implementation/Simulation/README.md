@@ -75,7 +75,7 @@ the top-level `README.md` in the repository root.
   `Modelling_and_Discretization`, which implement the formulation of
   **Section 3** and the discretization procedure of **Section 5**.
 
-- The recovered matrices \(M(q)\), \(C(q,\dot{q})\), and \(G(q)\) from the
+- The recovered matrices $M(q)$, $C(q,\dot{q})$, and $G(q)$ from the
   modeling folder correspond to the inverse dynamics equation in
   **Equation (6)** and are used in the definition of the CTC law in
   **Equations (7)–(8)**, which is then discretized and implemented here.
