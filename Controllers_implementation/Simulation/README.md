@@ -14,8 +14,8 @@ manuscript, including the four test trajectories (square and helix paths in
 the XY and YZ planes) and the metrics reported in **Table 2** and illustrated
 in **Figure 7**.
 
-> For installation, global requirements, and basic repository usage, refer to
-> the top-level `README.md` in the repository root.
+For installation, global requirements, and basic repository usage, refer to
+the top-level `README.md` in the repository root.
 
 ---
 
@@ -154,7 +154,7 @@ the numerical results reported in the manuscript (e.g., **Table 2**).
 
 ## Notes
 
-- The sampling time in the Simulink models is \(T_s = 10 \mathrm{ms}\),
+- The sampling time in the Simulink models is $T_s = 10 \mathrm{ms}$,
 consistent with the discrete-time design and the modeling scripts in
 `Modelling_and_Discretization`.
 
