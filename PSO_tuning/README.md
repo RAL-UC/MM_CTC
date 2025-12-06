@@ -26,7 +26,7 @@ For a given gain vector $x \in \mathbb{R}^{10}$, the objective function proceeds
    - The root-mean-square (RMS) end-effector position tracking error $J_{\text{traj}}$ in Cartesian space.
    - The RMS control power \(J_{\text{ener}}\) from joint torque–velocity products.
 5. Forms the scalar cost:
-   $J = \alpha J_{\text{traj}} + \beta J_{\text{ener}}$,
+   $J = \alpha \ J_{\text{traj}} + \beta \ J_{\text{ener}}$,
    where $\alpha$ and $\beta$ are positive weights defined in the objective function to balance tracking accuracy and energy consumption.
 
 The PSO algorithm iteratively updates a swarm of candidate solutions and converges to a gain vector that minimizes $J$ for each controller type.
@@ -126,10 +126,9 @@ For each tuned controller, the script produces a gains file:
 - `ctc.mat` for the CTC controller.
 - `pd.mat` for the PD controller.
 
-If the expected repository structure is detected, each file is written to:
+If the expected repository structure is detected, each gains file is written to:
 
-- `<repo_root>/PSO_Results/troller>.mat`
-- `<repo_root>/Controller_Implementation/Simulation/<roller>.mat`  
+- `<repo_root>/Controller_Implementation/Simulation/<controller>.mat`
 
 so that simulation scripts can load the tuned gains transparently.
 If the repository structure is not detected (e.g., when the tuning code is used standalone), the gains files are written to the current working directory, ensuring that `ctc.mat` and `pd.mat` are always available to the user.
