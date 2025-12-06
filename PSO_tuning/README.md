@@ -89,16 +89,15 @@ This shared interface allows the same objective function to be used for both con
 
 If the code is used within the full repository, the expected structure is:
 
-- `<repo_root>/Controller_Implementation/PSO_Tuning/` – this directory (`run_pso_tuning.m`).
-- `<repo_root>/Controller_Implementation/Simulation/` – simulation and trajectory scripts (e.g., `run_trajectory_experiments.m`).
-- `<repo_root>/PSO_Results/` – PSO artifacts and tuned gains.
+- `<repo_root>/PSO_tuning/` – this directory (`run_pso_tuning.m`).
+- `<repo_root>/Controller_implementation/Simulation/` – simulation and trajectory scripts (e.g., `run_trajectory_experiments.m`).
 
 ### 5.2. Running the tuner
 
 1. Start MATLAB and change directory to the PSO tuning folder, typically:
 
 ```matlab
-cd('<repo_root>/Controller_Implementation/PSO_Tuning');
+cd('<repo_root>/PSO_tuning');
 ```
 
 2. Run the tuning script:
@@ -128,7 +127,7 @@ For each tuned controller, the script produces a gains file:
 
 If the expected repository structure is detected, each gains file is written to:
 
-- `<repo_root>/Controller_Implementation/Simulation/<controller>.mat`
+- `<repo_root>/Controller_implementation/Simulation/<controller>.mat`
 
 so that simulation scripts can load the tuned gains transparently.
 If the repository structure is not detected (e.g., when the tuning code is used standalone), the gains files are written to the current working directory, ensuring that `ctc.mat` and `pd.mat` are always available to the user.
