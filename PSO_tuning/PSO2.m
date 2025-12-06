@@ -10,7 +10,7 @@
 % ************************************************************************************************************************************************* 
 
 
-function [ GBEST ,  cgCurve ] = PSO2 ( noP, maxIter,  problem, grapflag, dataVis )
+function [ GBEST , cgCurve , Swarm_save ] = PSO2 ( noP, maxIter,  problem, grapflag, dataVis )
 
 % Define the details of the objective function
 nVar = problem.nVar;
@@ -49,7 +49,7 @@ end
 % Main loop
 for t = 1 : maxIter
     
-    % Calcualte the objective value
+    % Calculate the objective value
     for k = 1 : noP
         
         currentX = Swarm.Particles(k).X;
@@ -70,7 +70,7 @@ for t = 1 : maxIter
             Swarm.GBEST.X = currentX;
             Swarm.GBEST.O = Swarm.Particles(k).O;
         end
-        fprintf('Iteración=%d, contador=%d\n',t,k);
+        fprintf('Iteration=%d, counter=%d\n',t,k);
     end
     
     % Update the X and V vectors
@@ -103,14 +103,14 @@ for t = 1 : maxIter
     
     if dataVis == 1
         disp('----------------------------------------------------------------------');
-        fprintf('Iteración número %d, mejor J encontrado = %.15f\n',t,Swarm.GBEST.O);
-        fprintf('con ganancias: ');
+        fprintf('Iteration number %d, best J found = %.15f\n',t,Swarm.GBEST.O);
+        fprintf('with gains: ');
         disp(Swarm.GBEST.X);
         disp('----------------------------------------------------------------------');
         if mod(t,10)==0
             file_save=strcat('best_parameters',num2str(t),'.mat');
             save(file_save,'Swarm','Swarm_save');
-            fprintf('Iteración %d grabada\n',t);
+            fprintf('Iteration %d saved\n',t);
         end
     end
     
