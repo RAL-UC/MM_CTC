@@ -128,9 +128,7 @@ The script will:
 
 By default, results are written to:
 
-```matlab
-<repo_root>/Experimental_results_data/Simulation/
-```
+- `<repo_root>/Experimental_results_data/Simulation/`
 
 If this folder does not exist (e.g., when running the script standalone),
 results are saved to the current working directory.
