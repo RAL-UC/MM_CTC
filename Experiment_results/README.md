@@ -62,7 +62,7 @@ $J_{\Omega} \pm 1.96 \sqrt{V\left(J_{\Omega}\right)/\Omega}$. These quantities a
 
 For a given generalized coordinate $q_i$, the accumulated Integral
 Time-weighted Absolute Error (ITAE) is defined as
-$\text{ITAE}_{q_i} = \int_{0}^{\infty} t \left\|\tilde{q}_i(t)\right\| dt$
+$\text{ITAE}_{q_i} = \int_{0}^{\infty}dt$
 where $\tilde{q}_i(t) = q_i^{\text{ref}}(t) - q_i(t)$ is the tracking error for
 that coordinate.
 
