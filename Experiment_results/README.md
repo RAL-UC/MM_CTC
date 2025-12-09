@@ -55,25 +55,19 @@ Closing error is one of the scalars reported in Tables 2 and 3.
 To assess repeatability over $\Omega$ repetitions of a given trajectory, the
 expected tracking error is estimated as
 $J_{\Omega} = \mathbb{E}\left(J_{\vec{x}}\right) = \frac{1}{\Omega}\sum_{i=1}^{\Omega} J_{\vec{x}}^{i}$
-with sample variance $V\left(J_{\Omega}\right) = \frac{1}{\Omega}\sum_{i=1}^{\Omega}\left(J_{\vec{x}}^{(i)} - J_{\Omega}\right)^2$ and an approximate 95% confidence interval
-$J_{\Omega} \pm 1.96 \sqrt{V\left(J_{\Omega}\right)/\Omega}$.These quantities are reported in the “variance” and “confidence interval” columns of the tables.
+with sample variance $V\left(J_{\Omega}\right) = \frac{1}{\Omega}\sum_{i=1}^{\Omega}\left(J_{\vec{x}}^{i} - J_{\Omega}\right)^2$ and an approximate 95% confidence interval
+$J_{\Omega} \pm 1.96 \sqrt{V\left(J_{\Omega}\right)/\Omega}$. These quantities are reported in the “variance” and “confidence interval” columns of the tables.
 
 ### 1.5 ITAE indices
 
 For a given generalized coordinate $q_i$, the accumulated Integral
 Time-weighted Absolute Error (ITAE) is defined as
-$
-\text{ITAE}_{q_i} =
-\int_{0}^{\infty} t \,\bigl|\tilde{q}_i(t)\bigr| \, dt
-$
+$\text{ITAE}_{q_i} = \int_{0}^{\infty} t \,\bigl|\tilde{q}_i(t)\bigr| dt$
 where $\tilde{q}_i(t) = q_i^{\text{ref}}(t) - q_i(t)$ is the tracking error for
 that coordinate.
 
 In discrete time, this is approximated as
-$
-\text{ITAE}_{q_i} \approx
-\sum_{k=1}^{N} t_k \bigl|\tilde{q}_i(k)\bigr| T_s
-$
+$\text{ITAE}_{q_i} \approx \sum_{k=1}^{N} t_k \bigl|\tilde{q}_i(k)\bigr| T_s$
 with sampling period $T_s$ and time instants $t_k = k T_s$.
 
 The scripts in `Table 4` compute:
