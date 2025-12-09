@@ -118,3 +118,275 @@ tests (Test 1 and Test 2), comparing the discrete CTC and PD controllers.
 #### 2.1.2 How to run
 
 1. In MATLAB, set the working directory to the desired test:
+
+```matlab
+cd path_to_repo/MM_CTC/Experiment_results/Laboratory_results/Figure 12/Test 1
+```
+
+2. Ensure that all `.mat` files listed in Section 2.1.1 are present.
+3. Run:
+
+```matlab
+plot_xee_test1
+plot_Prms_test1
+```
+
+4. The scripts generate the time histories of $e_{\text{rms}}$ and
+\(P_{\text{rms}}\) used in Figure 12 for Test 1. Repeat in `Test 2/` using
+`plot_xee_test2` and `plot_Prms_test2`.
+
+To use new experimental datasets, replace the `.mat` files with your own logs
+while preserving the variable names expected by the scripts.
+
+---
+
+### 2.2 Table 3 (laboratory statistics)
+
+`Laboratory_results/Table 3/` contains the script and data used to obtain the
+laboratory entries of Table 3, which summarize, for each controller and test:
+RMS power, closing error, expected RMS tracking error, variance and confidence
+interval.
+
+#### 2.2.1 Contents
+
+- Data:
+- `cpcdata_lab.mat`, `pddata_lab.mat`
+- `cpc_simlab_int.mat`, `pd_simlab_int.mat`  
+Same structure as in Figure 12.
+
+- Script:
+- `calcula_datos_lab_2.m`  
+ Loads the `.mat` files, evaluates $e_{\text{rms}}$, $P_{\text{rms}}$,
+ closing error, and the associated statistics over multiple repetitions
+ (expected value, variance and 95% confidence interval), and prints/saves
+ the values reported in Table 3.
+
+#### 2.2.2 How to run
+
+1. Set the working directory:
+
+```matlab
+cd path_to_repo/MM_CTC/Experiment_results/Laboratory_results/Table 3
+```
+
+2. Ensure that the four `.mat` files are present.
+3. Execute:
+
+```matlab
+calcula_datos_lab_2
+```
+
+4. The script outputs the scalar metrics per controller and test, matching the
+laboratory entries in Table 3.
+
+---
+
+### 2.3 Table 4 (laboratory ITAE indices)
+
+`Laboratory_results/Table 4/` computes the accumulated ITAE indices listed in
+Table 4 for both tests and both controllers.
+
+#### 2.3.1 Contents
+
+- `Test 1/` and `Test 2/`:
+- Data:
+ - `cpcdata_lab.mat`, `pddata_lab.mat`
+ - `cpc_simlab_int.mat`, `pd_simlab_int.mat`
+- Script:
+ - `plot_ITAEs.m`  
+   Computes the ITAE indices for:
+   - Base linear position (m·s).
+   - Base rotation (rad·s).
+   - Norm of the arm joint angles (rad·s).
+
+#### 2.3.2 How to run
+
+1. Set the working directory to the desired test:
+
+4. The script outputs the scalar metrics per controller and test, matching the
+laboratory entries in Table 3.
+
+---
+
+### 2.3 Table 4 (laboratory ITAE indices)
+
+`Laboratory_results/Table 4/` computes the accumulated ITAE indices listed in
+Table 4 for both tests and both controllers.
+
+#### 2.3.1 Contents
+
+- `Test 1/` and `Test 2/`:
+- Data:
+ - `cpcdata_lab.mat`, `pddata_lab.mat`
+ - `cpc_simlab_int.mat`, `pd_simlab_int.mat`
+- Script:
+ - `plot_ITAEs.m`  
+   Computes the ITAE indices for:
+   - Base linear position (m·s).
+   - Base rotation (rad·s).
+   - Norm of the arm joint angles (rad·s).
+
+#### 2.3.2 How to run
+
+1. Set the working directory to the desired test:
+
+```matlab
+cd path_to_repo/MM_CTC/Experiment_results/Laboratory_results/Table 4/Test 1
+```
+
+2. Verify that the `.mat` files are present.
+3. Run:
+
+```matlab
+plot_ITAEs
+```
+
+4. The script prints and/or saves the ITAE values that populate the
+corresponding row of Table 4.
+
+---
+
+## 3. Simulation_results
+
+This branch uses **simulation** data only. The CTC and PD controllers are
+executed in Simulink using the discrete-time models described in the paper, and
+the resulting trajectories are saved into `.mat` files. These are then used to
+reproduce the simulation figures and tables.
+
+The folder structure mirrors the laboratory branch:
+
+- `Figure 7/`  – simulation plots for four trajectories.
+- `Figure 12/` – simulation counterpart of the laboratory plots.
+- `Table 2/`   – simulation statistics for the four trajectories.
+- `Table 3/` and `Table 4/` – simulation-side statistics and ITAE indices.
+
+### 3.1 Figure 7 (simulation trajectories)
+
+`Simulation_results/Figure 7/` contains the `.mat` files and script to generate
+the plots for the four reference trajectories (square/helix in XY and YZ
+planes), comparing the discrete CTC and PD controllers.
+
+#### 3.1.1 Contents
+
+- Data:
+- `CPC_cuadrado_xy_grafico.mat`, `CPC_cuadrado_yz_grafico.mat`
+- `CPC_hélice_xy_grafico.mat`, `CPC_hélice_yz_grafico.mat`
+- `PD_cuadrado_xy_grafico.mat`, `PD_cuadrado_yz_grafico.mat`
+- `PD_hélice_xy_grafico.mat`, `PD_hélice_yz_grafico.mat`  
+Each file contains the time histories required to compute
+$e_{\text{rms}}(t)$ and $P_{\text{rms}}(t)$ for a specific trajectory and
+controller.
+
+- Script:
+- `graficos2.m`  
+ Generates the plots reported in Figure 7, including average trajectories
+ and confidence bounds; it relies on the `boundedline` toolbox included in
+ `boundedline-pkg-master/`.
+
+- Toolbox:
+- `boundedline-pkg-master/`  
+ Third-party toolbox providing the `boundedline` function.
+
+#### 3.1.2 How to run
+
+1. Set the working directory:
+
+```matlab
+cd path_to_repo/MM_CTC/Experiment_results/Simulation_results/Figure 7
+```
+
+2. Ensure all `.mat` files listed above are present and that
+`boundedline-pkg-master` resides in this directory.
+3. In MATLAB:
+
+```matlab
+addpath('boundedline-pkg-master');
+graficos2
+```
+
+4. The script generates the plots corresponding to Figure 7.
+
+---
+
+### 3.2 Table 2 (simulation statistics)
+
+`Simulation_results/Table 2/` contains the Simulink models, trajectory data and
+scripts used to compute the simulation-side entries of Table 2.
+
+#### 3.2.1 Contents
+
+- Simulink models:
+- `CPC_discreto_ruido_vel.slx`  
+ Discrete-time CTC controller with sensors and actuation noise.
+- `PD_discreto_ruido_vel.slx`  
+ Discrete-time PD controller under the same noise conditions.
+
+- Data:
+- `cuadrado_xy.mat`, `cuadrado_yz.mat`
+- `helice_xy.mat`, `helice_yz.mat`
+- `cpc.mat`, `pd.mat`
+
+- Scripts:
+- `cal_cindir.m`  
+ Direct kinematics utility used to map joint trajectories to end-effector
+ positions.
+- `estadisticas.m`  
+ Main script that runs (or loads) the simulations and computes
+ $e_{\text{rms}}$, $P_{\text{rms}}$, closing error and their statistics
+ for each trajectory and controller, reproducing the entries in Table 2.
+
+#### 3.2.2 How to run
+
+1. Set the working directory:
+
+```matlab
+cd path_to_repo/MM_CTC/Experiment_results/Simulation_results/Table 2
+```
+
+2. Ensure that both Simulink models and all `.mat` files are available.
+3. Run:
+
+```matlab
+estadisticas
+```
+
+4. By default, the script uses the provided `.mat` files to avoid lengthy
+simulations. Comments inside `estadisticas.m` indicate how to switch to
+full re-simulation if desired.
+
+---
+
+### 3.3 Simulation-side Table 3, Table 4 and Figure 12
+
+The folders:
+
+- `Simulation_results/Figure 12/`
+- `Simulation_results/Table 3/`
+- `Simulation_results/Table 4/`
+
+contain data and scripts that mirror those in `Laboratory_results/`, but
+computed from simulation rather than experimental logs. The usage pattern is
+analogous:
+
+1. Change to the corresponding directory.
+2. Ensure the `.mat` files are present.
+3. Run the associated script (`plot_xee_test*`, `plot_Prms_test*`,
+`calcula_datos_lab_2.m`, `plot_ITAEs.m`) to generate the simulation-side
+plots and scalar metrics. 
+
+---
+
+## 4. Software requirements
+
+- MATLAB (version used in the paper: please specify here, e.g. R2020b or older).
+- Simulink (required for scripts that invoke `*.slx` models, such as those in
+`Simulation_results/Table 2`).
+- No additional MathWorks toolboxes are strictly required beyond the base
+installation for running the scripts as provided.
+- The `boundedline` toolbox is included locally in
+`Simulation_results/Figure 7/boundedline-pkg-master` and is added to the path
+by `graficos2.m` (or manually via `addpath` as shown above).
+
+All scripts assume that the `.mat` files they use reside in the same directory
+as the script itself, so no manual path changes are necessary in the default
+configuration.
