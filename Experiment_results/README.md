@@ -16,6 +16,8 @@ computed by the scripts in this directory.
 
 ### 1.1 RMS end-effector tracking error
 
+Blabla $i_{test}$.
+
 For a given trajectory &i& sampled at instants &k = 1, \dots, N&, the RMS
 end-effector tracking error is defined as
 &J_{\vec{x}}^{(i)} = e_{\text{rms}}^{(i)} = \sqrt{\frac{1}{N} \sum_{k=1}^{N}\bigl(x_k^{\text{ref}} - x_k\bigr)^2 +
