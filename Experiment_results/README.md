@@ -60,17 +60,20 @@ $J_{\Omega} \pm 1.96 \sqrt{V\left(J_{\Omega}\right)/\Omega}$. These quantities a
 
 ### 1.5 ITAE indices
 
-For a given generalized coordinate $q_i$, the accumulated Integral
-Time-weighted Absolute Error (ITAE) is defined as $\text{ITAE}_{q_i} = \int_{0}^{\infty} t \left\|\tilde{q}_i(t)\right\| dt$ where $\tilde{q}_i(t) = q_i^{\text{ref}}(t) - q_i(t)$ is the tracking error for that coordinate.
+The ITAE indices used in this repository quantify the accumulated,
+time-weighted absolute tracking error of selected generalized coordinates.
+Rather than focusing only on instantaneous deviations, these indices penalize
+errors that persist over time, so larger and longer-lasting deviations have a
+greater impact on the final value.
 
-In discrete time, this is approximated as
-$\text{ITAE}_{q_i} \approx \sum_{k=1}^{N} t_k \bigl|\tilde{q}_i(k)\bigr| T_s$
-with sampling period $T_s$ and time instants $t_k = k T_s$.
+In the context of this work, the scripts in the `Table 4` folders compute:
+- An ITAE index for the base translational displacement, expressed in m·s.
+- An ITAE index for the base yaw angle, expressed in rad·s.
+- An aggregate ITAE index for the arm joints, expressed as a norm in rad·s.
 
-The scripts in `Table 4` compute:
-- ITAE for base translational position (m·s).
-- ITAE for base rotation (rad·s).
-- ITAE norm of the arm joint angles (rad·s).
+These quantities are obtained by processing the complete experimental or
+simulation time histories and are the ones reported and compared for the CTC
+and PD controllers in Table 4 of the paper.
 
 ---
 
