@@ -54,23 +54,9 @@ Closing error is one of the scalars reported in Tables 2 and 3.
 
 To assess repeatability over $\Omega$ repetitions of a given trajectory, the
 expected tracking error is estimated as
-$
-J_{\Omega} = \mathbb{E}\left[J_{\vec{x}}\right] \approx
-\frac{1}{\Omega}\sum_{i=1}^{\Omega} J_{\vec{x}}^{(i)}
-$
-with sample variance
-$
-V\bigl[J_{\Omega}\bigr] \approx
-\frac{1}{\Omega}\sum_{i=1}^{\Omega}
-\bigl(J_{\vec{x}}^{(i)} - J_{\Omega}\bigr)^2
-$
-and an approximate 95% confidence interval
-$
-J_{\Omega} \pm
-1.96\,\sqrt{ \frac{V\bigl[J_{\Omega}\bigr]}{\Omega} }.
-$
-These quantities are reported in the “variance” and “confidence interval”
-columns of the tables.
+$J_{\Omega} = \mathbb{E}\left[J_{\vec{x}}\right] \approx \frac{1}{\Omega}\sum_{i=1}^{\Omega} J_{\vec{x}}^{(i)}$
+with sample variance $V\bigl[J_{\Omega}\bigr] \approx\frac{1}{\Omega}\sum_{i=1}^{\Omega}\bigl(J_{\vec{x}}^{(i)} - J_{\Omega}\bigr)^2$ and an approximate 95% confidence interval
+$J_{\Omega} \pm 1.96\,\sqrt{ \frac{V\bigl[J_{\Omega}\bigr]}{\Omega} }$.These quantities are reported in the “variance” and “confidence interval” columns of the tables.
 
 ### 1.5 ITAE indices
 
