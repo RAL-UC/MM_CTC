@@ -35,8 +35,7 @@ $J_{\vec{u}}^{i} = P_{\text{rms}}^{i} =
 }$
 where $u_{c,k}$ denotes the instantaneous control “energy” term associated
 with joint $c$ at time step $k$, computed as the product of joint velocity
-and applied torque (i.e., joint power), and $n_j$ is the number of actuated
-joints.
+and applied torque (i.e., joint power).
 
 This metric is the basis for the power plots in Figure 12 and for the RMS power
 values reported in Tables 2 and 3.
@@ -45,12 +44,7 @@ values reported in Tables 2 and 3.
 
 The closing error for a trajectory is defined as the Euclidean norm of the
 final end-effector position error:
-$
-e_{\text{close}} =
-\left\|
-\vec{x}_N^{\text{ref}} - \vec{x}_N
-\right\|
-$
+$e_{\text{close}} =\left\|\vec{x}_N^{\text{ref}} - \vec{x}_N\right\|$
 with $\vec{x}_N^{\text{ref}}$ and $\vec{x}_N$ the reference and measured
 end-effector positions at the final sample $N$.
 
