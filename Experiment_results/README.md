@@ -17,7 +17,7 @@ computed by the scripts in this directory.
 ### 1.1 RMS end-effector tracking error
 
 For a given trajectory $i$ sampled at instants $k = 1, \dots, N$, the RMS
-end-effector tracking error is defined as $J_{\vec{x}}^{i} = e_{\text{rms}}^{i} = \sqrt{\frac{1}{N} \sum_{k=1}^{N}\left(x_k^{\text{ref}^{i}} - x_k^{i}\right)^2 + \left(y_k^{\text{ref}^{i}} - y_k^{i}\right)^2 +\left(z_k^{\text{ref}^{i}} - z_k^{i}\right)^2}$ where $(x_k^{\text{ref}}, y_k^{\text{ref}}, z_k^{\text{ref}})$ and $(x_k, y_k, z_k)$ denote the reference and measured end-effector positions at sample $k$, respectively.
+end-effector tracking error is defined as $J_{\vec{x}}^{i} = e_{\text{rms}}^{i} = \sqrt{\frac{1}{N} \sum_{k=1}^{N}\left(x_k^{\text{ref}^{i}} - x_k^{i}\right)^2 + \left(y_k^{\text{ref}^{i}} - y_k^{i}\right)^2 +\left(z_k^{\text{ref}^{i}} - z_k^{i}\right)^2}$ where for a given trajectory $i$, $(x_k^{\text{ref}}, y_k^{\text{ref}}, z_k^{\text{ref}})$ and $(x_k, y_k, z_k)$ denote the reference and measured end-effector positions at sample $k$, respectively.
 
 This metric is used in:
 - Figure 7 (simulation trajectories).
