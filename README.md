@@ -232,3 +232,56 @@ For related work on advanced modelling of mobile manipulators using MuJoCo, see
 also the repository:
 
 - https://github.com/RAL-UC/SSMM
+
+---
+
+## 8. How to cite this work
+
+If you use this work in your research, please consider citing both the article
+and the software repository.
+
+### 8.1 Article (under review)
+
+P. Galarce-Acevedo and M. Torres-Torriti, “Discrete-Time Computed Torque Control
+with PSO-Based Tuning for Energy-Efficient Mobile Manipulator Trajectory
+Tracking,” submitted to *Robotics*, 2025.
+
+A final volume, issue, pages and DOI should be added once the paper is formally
+accepted and published.
+
+### 8.2 Software repository
+
+P. Galarce-Acevedo and M. Torres-Torriti, “MM_CTC: Discrete-Time Computed
+Torque Control for a Mobile Manipulator (code and data),” 2025. [Online].
+Available: https://github.com/RAL-UC/MM_CTC
+
+### 8.3 BibTeX templates
+
+A minimal BibTeX entry for the article (to be completed upon acceptance) could
+be:
+
+```
+@article{GalarceAcevedo2025_MMCTC,
+author = {Galarce-Acevedo, Patricio and Torres-Torriti, Miguel},
+title = {Discrete-Time Computed Torque Control with PSO-Based Tuning for
+Energy-Efficient Mobile Manipulator Trajectory Tracking},
+journal = {Robotics},
+year = {2025},
+note = {submitted}
+}
+```
+
+and for the software:
+
+```
+@misc{GalarceAcevedo2025_MMCTC_Code,
+author = {Galarce-Acevedo, Patricio and Torres-Torriti, Miguel},
+title = {{MM_CTC}: Discrete-Time Computed Torque Control for a Mobile Manipulator
+(code and data)},
+year = {2025},
+howpublished = {\url{https://github.com/RAL-UC/MM_CTC}},
+note = {Accessed: YYYY-MM-DD}
+}
+```
+
+
