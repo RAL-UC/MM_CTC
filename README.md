@@ -132,11 +132,10 @@ MM_SymbolicLinearizationAndDiscretization
 
 This script uses the precomputed inverse-dynamics data in `inv_dyn.mat` to
 rebuild the coupled dynamic model and obtain the linearized and discretized
-model described in the manuscript. [file:96][file:41]
+model described in the manuscript.
 
 Optional scripts to fully regenerate the symbolic inverse dynamics are also
 documented locally, but are not required to reproduce the main results.
-[file:96]
 
 ### 4.2 PSO-based tuning of discrete-time CTC and PD
 
